@@ -2,8 +2,10 @@ import streamlit as st
 from fastai.vision.all import *
 import plotly.express as px
 import pathlib
-temp=pathlib.PosixPath
-pathlib.PosixPath=pathlib.WindowsPath
+import platform
+
+plt=platform.system()
+if plt == 'Linux': pathlib.WindowsPath=pathlib.PosixPath
 
 st.title("Classification of things during traffic")
 file_image = st.file_uploader('Upload image:', type=['png', 'jpeg', 'gif', 'svg'])
